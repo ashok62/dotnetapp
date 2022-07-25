@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  gcp_demo:
+    image: ${DOCKER_REGISTRY-}gcpdemo
+    build:
+      context: .
+      dockerfile: gcp_demo/Dockerfile
