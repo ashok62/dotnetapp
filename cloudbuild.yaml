@@ -5,11 +5,11 @@ steps:
 
 #Build the image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build','-t','us-central1-docker.pkg.dev/k8scluster-356117/demo:${_VERSION}','gcp_demo/']
+  args: ['build','-t','gcr.io/us-central1-docker.pkg.dev/k8scluster-356117/demo:${_VERSION}','gcp_demo/']
 
 #Push the image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push','us-central1-docker.pkg.dev/k8scluster-356117/demo:${_VERSION}']
+  args: ['push','gcr.io/us-central1-docker.pkg.dev/k8scluster-356117/demo:${_VERSION}']
 
 #Update the container image using kubectl set
 # - name: 'gcr.io/cloud-builders/kubectl'
