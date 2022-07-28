@@ -5,11 +5,11 @@ steps:
 
 #Build the image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build','-t','gcr.io/k8scluster-356117/demo/dotnetapp:${_VERSION}','gcp_demo/']
+  args: ['build','-t','gcr.io/closetpro/demo/dotnetapp:${_VERSION}','gcp_demo/']
 
 #Push the image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push','gcr.io/k8scluster-356117/demo/dotnetapp:${_VERSION}']
+  args: ['push','gcr.io/closetpro/demo/dotnetapp:${_VERSION}']
 
 #Update the container image using kubectl set
 # - name: 'gcr.io/cloud-builders/kubectl'
