@@ -20,15 +20,6 @@ steps:
     gcloud compute ssh cloudbuild@closet-pro-vm --tunnel-through-iap --zone us-central1-a --command='sh /home/cloudbuild/deploy.sh dotnetapp v1.0'  
 
 substitutions:
-    #GCP Specific configuration. Please DON'T change anything
-    _PROJECT: K8scluster
-
-
-    #Repository Specific configuration. DevOps can change this settings
-    _DEPLOYMENTNAME: hello-world-service
-    _CONTAINERNAME: dotnetapp
-    # _REPO_NAME: cicd-service
-
     # Developers ONLY change
     _VERSION: v1.1
 
