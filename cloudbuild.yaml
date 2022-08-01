@@ -10,12 +10,19 @@ steps:
 #Push the image
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push','gcr.io/closetpro/demo/dotnetapp:${_VERSION}']
+  
+#Deployment
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: /bin/sh
+  args:
+  - '-c'
+  - |
+    gcloud compute ssh cloudbuild@closet-pro-vm --tunnel-through-iap --zone us-central1-a --command='sh /home/cloudbuild/deploy.sh dotnetapp v1.0'  
 
 substitutions:
     #GCP Specific configuration. Please DON'T change anything
     _PROJECT: K8scluster
-    # _ZONE: asia-south1-a
-    # _GKE_CLUSTER: learn-gcp-with-mahesh-gke-cluster
+
 
     #Repository Specific configuration. DevOps can change this settings
     _DEPLOYMENTNAME: hello-world-service
