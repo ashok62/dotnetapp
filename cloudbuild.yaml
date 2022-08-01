@@ -2,6 +2,20 @@ steps:
 #First Clone from Google Cloud Source Repository
 - name: 'gcr.io/cloud-builders/git'
   args: ['clone','https://github.com/ashok62/dotnetapp.git']
+  
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - kms
+  - decrypt
+  - --ciphertext-file=build.pem.encrypted
+  - --plaintext-file=build.pem
+  - --location=asia-southeast1
+  - --keyring=keyring
+  - --key=build-key
+- name: 'ubuntu'
+  args: ['chmod', '400', './build.pem']
+- name: 'ubuntu'
+  args: ['bash', './deploy.bash']  
 
 #Build the image
 - name: 'gcr.io/cloud-builders/docker'
